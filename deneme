@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sana Özel</title>
+    <style>
+        /* Genel sayfa ayarları */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Kenarlarda taşma olmasını engeller */
+        }
+
+        /* Butonları yan yana tutan taşıyıcı */
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Her iki butonun ortak özellikleri */
+        .btn {
+            flex: 1; /* Başlangıçta ekranı tam yarı yarıya paylaşırlar */
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            /* Büyüme ve küçülme animasyonunun yumuşaklığı */
+            transition: flex 0.8s ease, opacity 0.8s ease, font-size 0.8s ease; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            white-space: nowrap; /* Yazıların alt satıra kaymasını önler */
+        }
+
+        /* Sol Butonun Rengi */
+        #btn1 {
+            background-color: #ff4d6d; /* Tatlı bir pembe/kırmızı */
+        }
+
+        /* Sağ Butonun Rengi */
+        #btn2 {
+            background-color: #c9184a; /* Daha koyu bir ton */
+        }
+
+        /* Ekranı kaplama animasyonu için eklenecek sınıf */
+        .fullscreen {
+            flex: 100 !important;
+            font-size: 4rem; /* Büyüyen butonun yazısı da büyür */
+        }
+
+        /* Tıklanan butonu gizlemek için eklenecek sınıf */
+        .hide {
+            flex: 0 !important;
+            opacity: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button id="btn1" class="btn">Bana Tıkla</button>
+        <button id="btn2" class="btn">Hayır, Bana Tıkla</button>
+    </div>
+
+    <script>
+        // Butonları JavaScript ile seçiyoruz
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+
+        // 1. butona tıklandığında olacaklar:
+        btn1.addEventListener('click', () => {
+            // 2. buton büyüsün ve yazısı değişsin
+            btn2.classList.add('fullscreen');
+            btn2.innerHTML = "Sürpriiiiz! Seni Çok Seviyorum ❤️"; 
+            
+            // 1. buton kaybolsun
+            btn1.classList.add('hide');
+        });
+
+        // 2. butona tıklandığında olacaklar:
+        btn2.addEventListener('click', () => {
+            // 1. buton büyüsün ve yazısı değişsin
+            btn1.classList.add('fullscreen');
+            btn1.innerHTML = "Sürpriiiiz! İyi ki Varsın 💕"; 
+            
+            // 2. buton kaybolsun
+            btn2.classList.add('hide');
+        });
+    </script>
+
+</body>
+</html>
